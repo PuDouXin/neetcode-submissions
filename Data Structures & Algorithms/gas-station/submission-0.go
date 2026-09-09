@@ -1,0 +1,24 @@
+func canCompleteCircuit(gas []int, cost []int) int {
+    if sum(gas) < sum(cost){
+		return -1
+	}
+	total, res := 0,0
+
+	for i := range gas{
+		total += gas[i] - cost[i]
+		if total < 0{
+			total = 0
+			res = i+1
+		}
+	}
+
+	return res
+}
+
+func sum(nums []int)int{
+	total := 0
+	for i := range nums{
+		total += nums[i]
+	}
+	return total
+}
